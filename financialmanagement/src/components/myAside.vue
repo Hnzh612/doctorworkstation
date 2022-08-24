@@ -25,7 +25,7 @@
                 </el-menu-item>
                 <el-menu-item index="3">
                     <i class="el-icon-document"></i>
-                    <span slot="title">消息</span>
+                    <span slot="title"><router-link to="/home/message">消息</router-link></span>
                 </el-menu-item>
                 <el-submenu index="4">
                     <template slot="title">

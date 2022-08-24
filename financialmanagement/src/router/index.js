@@ -12,7 +12,8 @@ import businessdetail from '@/components/standingBook/businessdetail.vue'
 import invoicingdetail from '@/components/standingBook/invoicingdetail.vue'
 // 导入设置组件
 import salesparam from '@/components/settings/salesparam.vue'
-
+//导入消息
+import message from '@/components/standingBook/message.vue'
 
 Vue.use(VueRouter)
 
@@ -29,7 +30,8 @@ const routes = [
       { path:'business', component:businessledger },
       { path:'businessdetail/:sid', component:businessdetail, props:true },
       { path:'user', component: user },
-      { path:'userdetail/:uid', component: userdetail , props:true }
+      { path:'userdetail/:uid', component: userdetail , props:true },
+      { path:'message',component: message}
       
     ]  
   },
