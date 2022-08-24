@@ -16,6 +16,18 @@
                 <input type="password" class="password" v-model="againPassowrd" placeholder="请再次输入密码">
                 <input class="btn" type="button" value="立即注册" @click="register">
                 <p><i>已有账号，</i><a class="Add" @click="change">点击前往登录</a></p>
+            </div>            <div class="main" :style="logintype==0?'height:320px':''" v-if="logintype == 0">
+                <input type="text" class="username" v-model="newUsername" placeholder="请输入用户名">
+                <input type="password" class="password" v-model="newPassowrd" placeholder="请输入密码">
+                <input type="password" class="password" v-model="againPassowrd" placeholder="请再次输入密码">
+                <input class="btn" type="button" value="立即注册" @click="register">
+                <p><i>已有账号，</i><a class="Add" @click="change">点击前往登录</a></p>
+            </div>            <div class="main" :style="logintype==0?'height:320px':''" v-if="logintype == 0">
+                <input type="text" class="username" v-model="newUsername" placeholder="请输入用户名">
+                <input type="password" class="password" v-model="newPassowrd" placeholder="请输入密码">
+                <input type="password" class="password" v-model="againPassowrd" placeholder="请再次输入密码">
+                <input class="btn" type="button" value="立即注册" @click="register">
+                <p><i>已有账号，</i><a class="Add" @click="change">点击前往登录</a></p>
             </div>
         </div>
     </div>
