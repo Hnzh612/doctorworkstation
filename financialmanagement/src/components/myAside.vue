@@ -9,7 +9,7 @@
                     </template>
                     <el-menu-item-group>
                         <el-menu-item>
-                            <router-link to="/home/sales">患者管理</router-link>
+                            <router-link to="/home/user">患者管理</router-link>
                         </el-menu-item>
                         <el-menu-item>
                             <router-link to="/home/invoicing">科普管理</router-link>

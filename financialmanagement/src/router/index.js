@@ -5,8 +5,8 @@ import myLogin from '@/components/myLogin.vue'
 import myHome from '@/components/myHome.vue'
 // 导入台账组件
 import InvoicingLedger from '@/components/standingBook/InvoicingLedger.vue'
-import salesLedger from '@/components/standingBook/salesLedger.vue'
-import salesdetail from '@/components/standingBook/salesdetail.vue'
+import user from '@/components/standingBook/user.vue'
+import userdetail from '@/components/standingBook/userdetail.vue'
 import businessledger from '@/components/standingBook/businessledger.vue'
 import businessdetail from '@/components/standingBook/businessdetail.vue'
 import invoicingdetail from '@/components/standingBook/invoicingdetail.vue'
@@ -22,14 +22,14 @@ const routes = [
     path: '/login',
     component: myLogin
   },
-  { path: '/home', component: myHome, redirect: '/home/sales',
+  { path: '/home', component: myHome, redirect: '/home/user',
     children:[
       { path:'invoicing', component: InvoicingLedger },
       { path:'invoicingdetail/:sid', component:invoicingdetail, props:true },
       { path:'business', component:businessledger },
       { path:'businessdetail/:sid', component:businessdetail, props:true },
-      { path:'sales', component: salesLedger },
-      { path:'salesdetail/:cid', component: salesdetail , props:true }
+      { path:'user', component: user },
+      { path:'userdetail/:uid', component: userdetail , props:true }
       
     ]  
   },
