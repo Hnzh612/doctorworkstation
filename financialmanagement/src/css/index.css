@@ -1,0 +1,18 @@
+:root {
+    font-size: 13px;
+}
+html,body,#app  {
+    height: 100%;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+a:visited {
+    color: #000;
+}
+em,i {
+    font-style: normal;
+}

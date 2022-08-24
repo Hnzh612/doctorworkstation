@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\资料\高血压\现在\highblood\bin\Release\net6.0\publish\</_PublishTargetUrl>
+    <History>True|2022-03-06T07:55:17.3259076Z;True|2022-03-06T15:33:46.4208398+08:00;True|2022-03-06T15:28:24.9283833+08:00;True|2022-03-06T15:23:27.9371965+08:00;True|2022-03-06T15:20:15.4216959+08:00;True|2022-03-06T15:18:07.3875327+08:00;False|2022-03-06T15:17:36.2313711+08:00;False|2022-03-06T15:16:53.4525457+08:00;True|2022-03-06T15:00:30.9998736+08:00;True|2022-03-06T13:03:05.6312077+08:00;False|2022-03-06T13:02:49.4372238+08:00;True|2022-03-06T11:12:03.8327666+08:00;True|2022-02-27T14:13:08.8838887+08:00;</History>
+  </PropertyGroup>
+</Project>
