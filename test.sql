@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80030
 File Encoding         : 65001
 
-Date: 2022-08-24 10:33:25
+Date: 2022-08-24 18:51:46
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -64,9 +64,7 @@ CREATE TABLE `appointment` (
   `DId` int DEFAULT NULL COMMENT '医生编号',
   PRIMARY KEY (`AID`) USING BTREE,
   KEY `UId` (`UId`) USING BTREE,
-  KEY `DId` (`DId`) USING BTREE,
-  CONSTRAINT `appointment_ibfk_1` FOREIGN KEY (`UId`) REFERENCES `user` (`UId`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `appointment_ibfk_2` FOREIGN KEY (`DId`) REFERENCES `doctor` (`DId`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  KEY `DId` (`DId`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
@@ -913,8 +911,7 @@ CREATE TABLE `bodydata` (
   `BBloodOxygen` double(20,3) DEFAULT NULL,
   `BHeartrate` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `BStep` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`BID`) USING BTREE,
-  CONSTRAINT `bodydata_ibfk_1` FOREIGN KEY (`BID`) REFERENCES `user` (`DataId`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  PRIMARY KEY (`BID`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
@@ -922,7 +919,7 @@ CREATE TABLE `bodydata` (
 -- ----------------------------
 INSERT INTO `bodydata` VALUES ('1', '1', '2022-03-01 16:16:13', '120/65', '5.100', '0.960', '100', '1000');
 INSERT INTO `bodydata` VALUES ('4', '2', '2022-03-03 16:16:17', '100/66', '5.000', '0.960', '100', '2000');
-INSERT INTO `bodydata` VALUES ('7', '110003', '2022-03-04 16:16:20', '120/70', '5.400', '0.970', '90', '3000');
+INSERT INTO `bodydata` VALUES ('7', '3', '2022-03-04 16:16:20', '120/70', '5.400', '0.970', '90', '3000');
 
 -- ----------------------------
 -- Table structure for casehistory
@@ -1102,6 +1099,7 @@ CREATE TABLE `user` (
   `DataId` int NOT NULL COMMENT '健康数据ID',
   `UAddress` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '住址',
   `UAge` int DEFAULT NULL COMMENT '年龄',
+  `Did` int DEFAULT NULL COMMENT '医生id',
   PRIMARY KEY (`UId`) USING BTREE,
   KEY `DataId` (`DataId`) USING BTREE,
   KEY `Name` (`Name`) USING BTREE
@@ -1110,12 +1108,11 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', '李华', '女', '2022-03-03', null, null, null, null, null, '上海市杨浦区', '13011441125', '620202124856882263', '1', '上海市杨浦区', '20');
-INSERT INTO `user` VALUES ('2', '张三', '男', '2021-12-01', '110', '50', '1', '1', '1', '上海市杨浦区', '111', '555555555555551122', '4', '上海市杨浦区', '32');
-INSERT INTO `user` VALUES ('3', '李四', '男', '2021-12-01', '110', '50', '1', '1', '1', '上海市杨浦区', '111', '112334556622331125', '3', '上海市杨浦区', '34');
-INSERT INTO `user` VALUES ('6', '王哈哈', '女', '2021-12-05', '150', '150', '1', '1', '1', '上海市杨浦区', '15000022221', '66522533214501362', '7', '上海市杨浦区', '12');
-INSERT INTO `user` VALUES ('7', '李哈哈', '女', '2021-12-05', '0', '0', '1', '1', '1', '上海市杨浦区', '19885641123', '995446330122154452', '5', '上海市杨浦区', '32');
-INSERT INTO `user` VALUES ('8', '王五', '女', '2022-03-09', '0', '0', '1', '1', '1', '上海市杨浦区', '18955462248', '210220445566220012', '8', '上海市杨浦区', '44');
+INSERT INTO `user` VALUES ('1', '李华', '女', '2022-03-03', null, null, null, null, null, '上海市杨浦区', '13011441125', '620202124856882263', '1', '上海市杨浦区', '20', '1');
+INSERT INTO `user` VALUES ('2', '张三', '男', '2021-12-01', '110', '50', '1', '1', '1', '上海市杨浦区', '111', '555555555555551122', '4', '上海市杨浦区', '32', '1');
+INSERT INTO `user` VALUES ('3', '李四', '男', '2021-12-01', '110', '50', '1', '1', '1', '上海市杨浦区', '111', '112334556622331125', '3', '上海市杨浦区', '34', '1');
+INSERT INTO `user` VALUES ('6', '王哈哈', '女', '2021-12-05', '150', '150', '1', '1', '1', '上海市杨浦区', '15000022221', '66522533214501362', '7', '上海市杨浦区', '12', '2');
+INSERT INTO `user` VALUES ('7', '李哈哈', '女', '2021-12-05', '0', '0', '1', '1', '1', '上海市杨浦区', '19885641123', '995446330122154452', '5', '上海市杨浦区', '32', '2');
 
 -- ----------------------------
 -- Table structure for userdynamics
