@@ -24,7 +24,7 @@
                     <span slot="title">安排表</span>
                 </el-menu-item>
                 <el-menu-item index="3">
-                    <i class="el-icon-document"></i>
+                    <i class="el-icon-message"></i>
                     <span slot="title"><router-link to="/home/message">消息</router-link></span>
                 </el-menu-item>
                 <el-submenu index="4">
