@@ -3,12 +3,12 @@
         <el-popover placement="right" width="600" trigger="click" style="margin:0 10px" @hide="add()" v-model="show">
             <div class="inline-block">
                 <span class="demonstration">年&nbsp;&nbsp;月：</span>
-                <el-date-picker type="month" v-model="temdata.date" placeholder="选择日期" style="width:180px">
+                <el-date-picker v-model="temdata.ATime" placeholder="选择日期" style="width:180px">
                 </el-date-picker>
             </div>
             <div class="inline-block">
-                <span class="demonstration">备&nbsp;&nbsp;注：</span>
-                <el-input v-model="temdata.remark" style="width:180px"></el-input>
+                <span class="demonstration">标&nbsp;&nbsp;题：</span>
+                <el-input v-model="temdata.ATitle" style="width:180px"></el-input>
             </div>
             <el-button type="success" style="margin-left:20px" circle @click="showoff()">确定</el-button>
             <el-button type="success" icon="el-icon-plus" circle slot="reference">添加</el-button>
@@ -16,21 +16,15 @@
         <el-table ref="singleTable" :data="tableData" style="width: 100%" > 
             <el-table-column fixed type="index" width="80" label="序号" align="center">
             </el-table-column>
-            <el-table-column prop="date" label="日期" width="150" align="center">
+            <el-table-column prop="aTime" label="日期" width="150" align="center">
             </el-table-column>
-            <el-table-column prop="inweightsum" label="入库数量（合计）" width="150" align="center">
+            <el-table-column prop="aTitle" label="标题" width="150" align="center">
             </el-table-column>
-            <el-table-column prop="inamountsum" label="入库金额（合计）" width="150" align="center">
+            <el-table-column prop="aType" label="关键词" width="150" align="center">
             </el-table-column>
-            <el-table-column prop="outweightsum" label="出库数量（合计）" width="150" align="center">
+            <el-table-column prop="aAgree" label="点赞量" width="150" align="center">
             </el-table-column>
-            <el-table-column prop="outamountsum" label="出库金额（合计）" width="150" align="center">
-            </el-table-column>
-            <el-table-column prop="leftweightsum" label="结存数量（合计）" width="150" align="center">
-            </el-table-column>
-            <el-table-column prop="leftamountsum" label="结存金额（合计）" width="150" align="center">
-            </el-table-column>
-            <el-table-column prop="remark" label="备注" width="200" align="center">
+            <el-table-column prop="aCollect" label="收藏量" width="150" align="center">
             </el-table-column>
             <el-table-column fixed="right" label="操作">
                 <template slot-scope="scope">
@@ -43,7 +37,7 @@
                             </el-date-picker>
                         </div>
                         <div class="inline-block">
-                            <span class="demonstration">备&nbsp;&nbsp;注：</span>
+                            <span class="demonstration">标&nbsp;&nbsp;题：</span>
                             <el-input v-model="temdata.remark" style="width:180px"></el-input>
                         </div>
                         <el-button type="text" slot="reference" @click="changetemp(scope.row.id)">修改</el-button>
@@ -79,7 +73,7 @@ export default {
         handleCurrentChangeFun(v) { //页面点击
             console.log(v)
             this.page = v; //当前页
-            this.GetAllSum(this.page)
+            this.GetAllArticle(this.page)
         },
         // 编辑
         edit(row) {
@@ -87,7 +81,7 @@ export default {
         },
         // 删除
         async del(id) {
-            this.$confirm('此操作将永久删除该订单以及关联栏目，是否继续？', '提示', {
+            this.$confirm('此操作将永久删除该文章，是否继续？', '提示', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
                 type: 'warning'
@@ -101,7 +95,7 @@ export default {
                     if (this.page != 1 && this.total % 10 == 1) {
                         this.page = this.page - 1
                     }
-                    this.GetAllSum(this.page)
+                    this.GetAllArticle(this.page)
                 } else {
                     this.$message({
                         message: '删除失败',
@@ -130,22 +124,20 @@ export default {
         },
         // 添加数据
         async add() {
-            if (this.temdata.date != '') {
-                // 数据格式化
-                this.temdata.date = this.dayjs(this.temdata.date).$d.getTime()
-                const { data: res } = await invoicingApi.UpdateSum(this.temdata)
+            if (this.temdata.ATitle != '') {
+                const { data: res } = await invoicingApi.AddArticle(this.temdata)
                 if (res == 1) {
                     this.$message({
                         type: 'success',
                         message: '添加成功'
                     })
-                    this.GetAllSum(this.page)
+                    this.GetAllArticle(this.page)
                 } else if (res == 2) {
                     this.$message({
                         type: 'success',
                         message: '修改成功'
                     })
-                    this.GetAllSum(this.page)
+                    this.GetAllArticle(this.page)
                 } else {
                     this.$message({
                         type: 'error',
@@ -160,6 +152,11 @@ export default {
                     surplus: 0,
                     remark: ''
                 }
+            } else {
+                this.$message({
+                    type: 'error',
+                    message: '请输入标题'
+                })
             }
         },
         // 关闭添加弹窗
@@ -167,12 +164,12 @@ export default {
             this.show = false
         },
         // 获取所有时间业务总和列表
-        async GetAllSum(page) {
-            const { data: res } = await invoicingApi.GetAllSum(page)
+        async GetAllArticle(page) {
+            const { data: res } = await invoicingApi.GetAllArticle(page)
             this.total = res.message * 1
             for (let i = 0; i < res.data.length; i++) {
                 this.$set(
-                    res.data[i], 'date', this.dayjs(res.data[i].date).format('YYYY-MM')
+                    res.data[i], 'aTime', this.dayjs(res.data[i].aTime).format('YYYY-MM-DD')
                 )
             }
             this.tableData = res.data
@@ -189,17 +186,21 @@ export default {
             tableData: [],
             // 临时缓存
             temdata: {
-                id: 0,
-                date: this.dayjs().$d.getTime(),
-                incoinsum: 0,
-                outcoinsum: 0,
-                surplus: 0,
-                remark: ''
+                AId: 0,
+                DId: 1,
+                AType: '',
+                ATitle: '',
+                APath: '',
+                AContent: '',
+                ATime:this.dayjs().$d,
+                AAgree:0,
+                ACollect:0,
+                ALength:0
             }
         }
     },
     created() {
-        this.GetAllSum(this.page)
+        this.GetAllArticle(this.page)
     }
 
 }

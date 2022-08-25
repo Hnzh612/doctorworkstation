@@ -1,10 +1,14 @@
 import request from "@/utils/requset";
 
-// 获取所有时间进销存总和列表
-const GetAllSum = (page) => {
-    return request.get('invoicing/getallsum?page='+page)
+// 获取所有文章
+const GetAllArticle = (page) => {
+    return request.get('Articl/GetAllArticle?page='+page)
 }
 
+// 添加文章
+const AddArticle = (Article) => {
+    return request.post('Article/AddArticle',Article)
+}
 // 新建某月进销存总和
 const AddSum = (invoicingledgercssum) => {
     return request.post('invoicing/addsum',invoicingledgercssum)
@@ -35,7 +39,8 @@ const DelLedgercs = (id) => {
     return request.get('invoicing/delledgercs?id=' + id)
 }
 export default {
-    GetAllSum,
+    GetAllArticle,
+    AddArticle,
     AddSum,
     DelSum,
     UpdateSum,

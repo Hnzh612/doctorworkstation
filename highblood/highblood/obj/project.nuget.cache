@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7wf1HphO13EfW/u+ZUxgfuCEujG1f+MMsSv6fbT+jyVn9XHZL8fIrl1MKIe74gQTF82nMSvjYznu0BBmZ8SKTA==",
+  "dgSpecHash": "gz5E8fqfsOKUG9StoKQZO5FFCRRrEDwPKDNLZXTulf2UtnvxMkLCgRYzlNou3zopmfIOh4TqRWAHsfpi6MEVlg==",
   "success": true,
-  "projectFilePath": "D:\\下载\\highblood\\highblood\\highblood.csproj",
+  "projectFilePath": "D:\\资料\\医生工作站\\highblood\\highblood\\highblood.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\98059\\.nuget\\packages\\bouncycastle.netcore\\1.8.3\\bouncycastle.netcore.1.8.3.nupkg.sha512",
     "C:\\Users\\98059\\.nuget\\packages\\google.protobuf\\3.6.1\\google.protobuf.3.6.1.nupkg.sha512",

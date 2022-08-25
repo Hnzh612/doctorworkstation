@@ -8,8 +8,9 @@ namespace highblood.Services
 {
     public interface IArticleServices
     {
-        public List<displayArticle> GetAllArticle();
+        public CallBack GetAllArticle(int page);
         public List<displayArticle> GetArticleByTitle(string title);
+        public int AddArticle(Article article);
         //public int AddArticle();
         //public int DelArticle();
     }

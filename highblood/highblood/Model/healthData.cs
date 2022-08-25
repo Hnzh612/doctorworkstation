@@ -17,6 +17,7 @@ namespace highblood.Model
             public string HeartRate { get; set; }
             public string Steps { get; set; }
             public string Date { get; set; }
+            public int uid { get; set; }
 
     }
 }

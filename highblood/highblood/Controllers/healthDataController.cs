@@ -30,6 +30,16 @@ namespace highblood.Controllers
             return _dataServices.GetAllData();
         }
         /// <summary>
+        /// 根据id返回数据
+        /// </summary>
+        /// <returns></returns>
+        [Route("/HealthData/GetDateById")]
+        [HttpGet]
+        public List<healthData> GetDateById(int id)
+        {
+            return _dataServices.GetDataById(id);
+        }
+        /// <summary>
         /// 返回近七天数据
         /// </summary>
         /// <returns></returns>

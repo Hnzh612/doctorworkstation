@@ -25,9 +25,9 @@ namespace highblood.Controllers
         /// <returns></returns>
         [Route("/Articl/GetAllArticle")]
         [HttpGet]
-        public List<displayArticle> GetAllArticle()
+        public CallBack GetAllArticle(int page)
         {
-            return _articleServices.GetAllArticle();
+            return _articleServices.GetAllArticle(page);
         }
 
         /// <summary>
@@ -39,6 +39,17 @@ namespace highblood.Controllers
         public List<displayArticle> GetArticleByTitle(string title)
         {
             return _articleServices.GetArticleByTitle(title);
+        }
+
+        /// <summary>
+        /// 添加文章
+        /// </summary>
+        /// <returns></returns>
+        [Route("/Article/AddArticle")]
+        [HttpPost]
+        public int AddArticle(Article article)
+        {
+            return _articleServices.AddArticle(article);
         }
     }
 }
