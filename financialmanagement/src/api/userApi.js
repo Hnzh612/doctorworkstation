@@ -24,6 +24,15 @@ const getAllUserAllInformation = (querybody) => {
     }})
 }
 
+// 根据id查询患者
+const GetUserById = (id) => {
+    return request.get('User/GetUserById?id='+id)
+}
+
+// 根据患者id获取仪器数据
+const GetHealthDate = (uid) => {
+    return request.get('HealthData/GetDateById?id='+uid)
+}
 // 删除患者的所有数据
 const delUserAllInfomation = (id) => {
     return request.get('User/DelUser?id='+id)
@@ -32,5 +41,7 @@ export default{
     login,
     register,
     getAllUserAllInformation,
+    GetUserById,
+    GetHealthDate,
     delUserAllInfomation
 }

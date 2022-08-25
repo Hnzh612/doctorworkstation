@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\下载\\highblood\\highblood\\highblood.csproj": {}
+    "D:\\资料\\医生工作站\\highblood\\highblood\\highblood.csproj": {}
   },
   "projects": {
-    "D:\\下载\\highblood\\highblood\\highblood.csproj": {
+    "D:\\资料\\医生工作站\\highblood\\highblood\\highblood.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\下载\\highblood\\highblood\\highblood.csproj",
+        "projectUniqueName": "D:\\资料\\医生工作站\\highblood\\highblood\\highblood.csproj",
         "projectName": "highblood",
-        "projectPath": "D:\\下载\\highblood\\highblood\\highblood.csproj",
+        "projectPath": "D:\\资料\\医生工作站\\highblood\\highblood\\highblood.csproj",
         "packagesPath": "C:\\Users\\98059\\.nuget\\packages\\",
-        "outputPath": "D:\\下载\\highblood\\highblood\\obj\\",
+        "outputPath": "D:\\资料\\医生工作站\\highblood\\highblood\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\98059\\AppData\\Roaming\\NuGet\\NuGet.Config",

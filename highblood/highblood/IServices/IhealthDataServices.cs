@@ -17,6 +17,7 @@ namespace highblood.Services
         /// 返回近七天数据
         /// </summary>
         /// <returns></returns>
+        public List<healthData> GetDataById(int id);
         public List<healthData> GetRencentData();
         /// <summary>
         /// 返回近七天运动数据

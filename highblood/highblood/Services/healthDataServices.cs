@@ -24,6 +24,14 @@ namespace highblood.Services
             return db.Queryable<healthData>().ToList();
         }
         /// <summary>
+        /// 根据id返回数据
+        /// </summary>
+        /// <returns></returns>
+        public List<healthData> GetDataById(int id)
+        {
+            return db.Queryable<healthData>().Where(it => it.uid == id).ToList();
+        }
+        /// <summary>
         /// 返回最近七天数据
         /// </summary>
         /// <returns></returns>

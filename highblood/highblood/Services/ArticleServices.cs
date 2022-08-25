@@ -1,4 +1,5 @@
 ﻿using highblood.Model;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using SqlSugar;
 using System;
 using System.Collections.Generic;
@@ -19,10 +20,12 @@ namespace highblood.Services
         /// 返回所有文章信息
         /// </summary>
         /// <returns></returns>
-        public List<displayArticle> GetAllArticle()
+        public CallBack GetAllArticle(int page)
         {
-            //return db.Queryable<article>().ToList();
-            return db.Queryable<article, doctor>((a, d) => new JoinQueryInfos(JoinType.Left, a.DId == d.DId)).Select((a, d) => new displayArticle { AId = a.AId, DId = a.DId, DName = d.DName, DPhoto_Path =d.DPhoto_Path ,AType = a.AType, ATitle = a.ATitle, AContent = a.AContent , ATime =a.ATime, ALength =a.ALength , AAgree =a.AAgree , ACollect =a.ACollect }).ToList();
+            CallBack callBack = new CallBack();
+            callBack.message = db.Ado.GetInt("select count(1) from article").ToString();
+            callBack.data = db.Queryable<article>().OrderBy(it => it.ATime, OrderByType.Desc).ToPageList(page, 10).ToList();
+            return callBack;
             //return db.Queryable<article>().LeftJoin<doctor>((t, s) => t.DId == s.DId).Where(t => t.Title.Contains(title)).Select((t, s) => new Story { SId = s.SId, Content = s.Content, Pic = s.Pic, Date = s.Date, TId = s.TId }).ToList();
         }
 
@@ -34,6 +37,15 @@ namespace highblood.Services
         {
             return db.Queryable<article, doctor>((a, d) => new JoinQueryInfos(JoinType.Left, a.DId == d.DId)).Where(a => a.ATitle.Contains(title)).Select((a, d) => new displayArticle { AId = a.AId, DId = a.DId, DName = d.DName, DPhoto_Path = d.DPhoto_Path, AType = a.AType, ATitle = a.ATitle, AContent = a.AContent, ATime = a.ATime, ALength = a.ALength, AAgree = a.AAgree, ACollect = a.ACollect }).ToList();
             //return db.Queryable<article>().Where(it => it.ATitle.Contains(title)).ToList();
+        }
+
+        /// <summary>
+        /// 添加文章
+        /// </summary>
+        /// <returns></returns>
+        public int AddArticle(Article article)
+        {
+            return db.Insertable(article).ExecuteCommand();
         }
     }
 }
