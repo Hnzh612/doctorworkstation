@@ -184,7 +184,7 @@ export default {
       try {
         FileSaver.saveAs(
           new Blob([wbout],{ type: "application/octet-stream" }),
-          `${this.tableData[0].date.slice(0,7)}-销售详情.xlsx`
+          `${this.tableData[0].date.slice(0,7)}-病人详情.xlsx`
         )
       } catch (e) {
         if (typeof console !== 'undefined') console.log(e,wbout)
