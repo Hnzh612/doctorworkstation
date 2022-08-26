@@ -8,14 +8,12 @@ using System.Threading.Tasks;
 
 namespace highblood.Services
 {
-    public class userdynamicsServices : IuserdynamicsServices
+    public class userdynamicsServices : Dbservice, IuserdynamicsServices
     {
-        SqlSugarClient db = new SqlSugarClient(new ConnectionConfig()
+        public userdynamicsServices() : base()
         {
-            ConnectionString = "server=localhost;port=3306;uid=root;pwd=123456;database=test;charset=utf8mb4",
-            DbType = DbType.MySql,
-            IsAutoCloseConnection = true
-        });
+
+        }
         public List<userdynamics> GetIuserdynamicsServices()
         {
             return db.Queryable<userdynamics>().ToList();

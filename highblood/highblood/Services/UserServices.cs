@@ -7,14 +7,12 @@ using SqlSugar;
 
 namespace highblood.Services
 {
-    public class UserServices : IUserServices
+    public class UserServices : Dbservice, IUserServices
     {
-        SqlSugarClient db = new SqlSugarClient(new ConnectionConfig()
+        public UserServices() : base()
         {
-            ConnectionString = "server=localhost;port=3306;uid=root;pwd=123456;database=test;charset=utf8mb4;",
-            DbType = DbType.MySql,
-            IsAutoCloseConnection = true
-        });
+
+        }
         /// <summary>
         /// 返回所有数据
         /// </summary>

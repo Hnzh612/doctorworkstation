@@ -8,14 +8,12 @@ using System.Threading.Tasks;
 
 namespace highblood.Services
 {
-    public class BodydataServices : IBodydataServices
+    public class BodydataServices : Dbservice, IBodydataServices
     {
-        SqlSugarClient db = new SqlSugarClient(new ConnectionConfig()
+        public BodydataServices() : base()
         {
-            ConnectionString = "server=localhost;port=3306;uid=root;pwd=123456;database=test;charset=utf8mb4;",
-            DbType = DbType.MySql,
-            IsAutoCloseConnection = true
-        });
+
+        }
         /// <summary>
         /// 返回所有数据
         /// </summary>

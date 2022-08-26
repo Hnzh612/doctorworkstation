@@ -7,14 +7,12 @@ using System.Threading.Tasks;
 
 namespace highblood.Services
 {
-    public class DoctorServices : IDoctorServices
+    public class DoctorServices : Dbservice, IDoctorServices
     {
-        SqlSugarClient db = new SqlSugarClient(new ConnectionConfig()
+        public DoctorServices() : base()
         {
-            ConnectionString = "server=localhost;port=3306;uid=root;pwd=123456;database=test;charset=utf8mb4;",
-            DbType = DbType.MySql,
-            IsAutoCloseConnection = true
-        });
+
+        }
         /// <summary>
         /// 返回所有医生信息
         /// </summary>

@@ -8,14 +8,12 @@ using System.Threading.Tasks;
 
 namespace highblood.Services
 {
-    public class DocloginServices : IDocloginServices
+    public class DocloginServices : Dbservice, IDocloginServices
     {
-        SqlSugarClient db = new SqlSugarClient(new ConnectionConfig()
+        public DocloginServices() : base()
         {
-            ConnectionString = "server=localhost;port=3306;uid=root;pwd=123456;database=test;charset=utf8mb4;",
-            DbType = DbType.MySql,
-            IsAutoCloseConnection = true
-        });
+
+        }
         //返回所有账号密码
         public List<Doclogin> GetDoclogin()
         {
