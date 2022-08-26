@@ -8,14 +8,12 @@ using System.Threading.Tasks;
 
 namespace highblood.Services
 {
-    public class FollowupServices : IFollowupServices
+    public class FollowupServices : Dbservice, IFollowupServices
     {
-        SqlSugarClient db = new SqlSugarClient(new ConnectionConfig()
+        public FollowupServices() : base()
         {
-            ConnectionString = "server=localhost;port=3306;uid=root;pwd=123456;database=test;charset=utf8mb4",
-            DbType = DbType.MySql,
-            IsAutoCloseConnection = true
-        });
+
+        }
         public List<Followup> GetFollowup()
         {
             return db.Queryable<Followup>().ToList();

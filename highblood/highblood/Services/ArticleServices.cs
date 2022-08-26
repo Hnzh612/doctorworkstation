@@ -8,14 +8,12 @@ using System.Threading.Tasks;
 
 namespace highblood.Services
 {
-    public class ArticleServices : IArticleServices
+    public class ArticleServices : Dbservice, IArticleServices
     {
-        SqlSugarClient db = new SqlSugarClient(new ConnectionConfig()
+        public ArticleServices() : base()
         {
-            ConnectionString = "server=localhost;port=3306;uid=root;pwd=123456;database=test;charset=utf8mb4;",
-            DbType = DbType.MySql,
-            IsAutoCloseConnection = true
-        });
+
+        }
         /// <summary>
         /// 返回所有文章信息
         /// </summary>

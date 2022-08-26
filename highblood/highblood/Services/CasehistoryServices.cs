@@ -8,14 +8,12 @@ using System.Threading.Tasks;
 
 namespace highblood.Services
 {
-    public class CasehistoryServices : ICasehistoryServices
+    public class CasehistoryServices : Dbservice, ICasehistoryServices
     {
-        SqlSugarClient db = new SqlSugarClient(new ConnectionConfig()
+        public CasehistoryServices() : base()
         {
-            ConnectionString = "server=localhost;port=3306;uid=root;pwd=123456;database=test;charset=utf8mb4;",
-            DbType = DbType.MySql,
-            IsAutoCloseConnection = true
-        });
+
+        }
         public List<Casehistory> GetCasehistory()
         {
             return db.Queryable<Casehistory>().ToList();

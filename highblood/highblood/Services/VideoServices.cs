@@ -7,14 +7,12 @@ using System.Threading.Tasks;
 
 namespace highblood.Services
 {
-    public class VideoServices : IVideoServices
+    public class VideoServices : Dbservice, IVideoServices
     {
-        SqlSugarClient db = new SqlSugarClient(new ConnectionConfig()
+        public VideoServices() : base()
         {
-            ConnectionString = "server=localhost;port=3306;uid=root;pwd=123456;database=test;charset=utf8mb4;",
-            DbType = DbType.MySql,
-            IsAutoCloseConnection = true
-        });
+
+        }
         /// <summary>
         /// 返回所有视频信息
         /// </summary>

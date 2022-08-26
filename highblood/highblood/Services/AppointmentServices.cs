@@ -9,14 +9,12 @@ using System.Threading.Tasks;
 
 namespace highblood.Services
 {
-    public class AppointmentServices : IAppointmentServices
+    public class AppointmentServices :Dbservice, IAppointmentServices
     {
-        SqlSugarClient db = new SqlSugarClient(new ConnectionConfig()
+        public AppointmentServices() : base()
         {
-            ConnectionString = "server=localhost;port=3306;uid=root;pwd=123456;database=test;charset=utf8mb4;",
-            DbType = DbType.MySql,
-            IsAutoCloseConnection = true
-        });
+
+        }
         public List<Appointment> GetAppointment()
         {
             return db.Queryable<Appointment>().ToList();
