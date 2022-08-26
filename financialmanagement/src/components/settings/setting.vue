@@ -48,6 +48,9 @@ export default {
     handleClick(row) {
       console.log(row);
     },
+    filterTag(){
+      
+    }
   },
 
   data() {
