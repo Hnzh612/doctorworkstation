@@ -14,9 +14,6 @@
                         <el-menu-item>
                             <router-link to="/home/invoicing">科普管理</router-link>
                         </el-menu-item>
-                        <el-menu-item>
-                            <router-link to="/home/business">转诊管理</router-link>
-                        </el-menu-item>
                     </el-menu-item-group>
                 </el-submenu>
                 <el-menu-item index="2">
@@ -37,7 +34,7 @@
                             <router-link to="/settings/salesparam">账号管理</router-link>
                         </el-menu-item>
                         <el-menu-item>
-                            <router-link to="/home/purchase">权限设置</router-link>
+                            <router-link to="/settings/setting">权限设置</router-link>
                         </el-menu-item>
                     </el-menu-item-group>
                 </el-submenu>

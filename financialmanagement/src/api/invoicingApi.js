@@ -9,6 +9,11 @@ const GetAllArticle = (page) => {
 const AddArticle = (Article) => {
     return request.post('Article/AddArticle',Article)
 }
+
+// 根据id获取文章信息
+const GetArticleById = (id) => {
+    return request.get('Article/GrtArticleById?id='+id)
+}
 // 新建某月进销存总和
 const AddSum = (invoicingledgercssum) => {
     return request.post('invoicing/addsum',invoicingledgercssum)
@@ -41,6 +46,7 @@ const DelLedgercs = (id) => {
 export default {
     GetAllArticle,
     AddArticle,
+    GetArticleById,
     AddSum,
     DelSum,
     UpdateSum,

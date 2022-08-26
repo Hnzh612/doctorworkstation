@@ -40,12 +40,29 @@ namespace highblood.Services
         }
 
         /// <summary>
+        /// 根据id获取文章信息
+        /// </summary>
+        /// <returns></returns>
+        public List<article> GrtArticleById(int id)
+        {
+            return db.Queryable<article>().Where(it=>it.AId == id).ToList();
+        }
+
+        /// <summary>
         /// 添加文章
         /// </summary>
         /// <returns></returns>
         public int AddArticle(Article article)
         {
+            if(article.AId > 0 )
+            {
+                return db.Updateable(article).Where(it => it.AId == article.AId).ExecuteCommand();
+            }
+            else
+            {
             return db.Insertable(article).ExecuteCommand();
+            }
         }
+
     }
 }
