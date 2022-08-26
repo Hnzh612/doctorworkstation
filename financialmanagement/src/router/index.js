@@ -12,6 +12,7 @@ import businessdetail from '@/components/standingBook/businessdetail.vue'
 import invoicingdetail from '@/components/standingBook/invoicingdetail.vue'
 // 导入设置组件
 import salesparam from '@/components/settings/salesparam.vue'
+import setting from '@/components/settings/setting.vue'
 //导入消息
 import message from '@/components/standingBook/message.vue'
 import messagedetail from '@/components/standingBook/messagedetail.vue'
@@ -27,7 +28,7 @@ const routes = [
   { path: '/home', component: myHome, redirect: '/home/user',
     children:[
       { path:'invoicing', component: InvoicingLedger },
-      { path:'invoicingdetail/:sid', component:invoicingdetail, props:true },
+      { path:'invoicingdetail/:aid', component:invoicingdetail, props:true },
       { path:'business', component:businessledger },
       { path:'businessdetail/:sid', component:businessdetail, props:true },
       { path:'user', component: user },
@@ -38,7 +39,8 @@ const routes = [
   },
   { path: '/settings', component: myHome, redirect: '/settings/salesparam',
     children:[
-      { path:'salesparam', component: salesparam }
+      { path:'salesparam', component: salesparam },
+      { path:'setting', component: setting }
     ]
   }
 ]

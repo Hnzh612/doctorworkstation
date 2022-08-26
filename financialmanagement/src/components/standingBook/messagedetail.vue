@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="this.$type == '管理员'">
         <div class="chat_save">
             <el-row v-for="message in messages" :key="message.sid">
                 <div v-if="message.sid==user1.id">
@@ -24,6 +24,7 @@
             <el-input v-model="input" class=""></el-input>
         </div>
     </div>
+    <notype v-else></notype>
 </template>
 
 <style scoped>
@@ -65,7 +66,9 @@
 </style>
 
 <script>
+import notype from '../utlis/notype.vue'
 export default {
+  components: { notype },
     data(){
         return{
             input: '',

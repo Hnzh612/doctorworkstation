@@ -42,6 +42,17 @@ namespace highblood.Controllers
         }
 
         /// <summary>
+        /// 根据id获取文章信息
+        /// </summary>
+        /// <returns></returns>
+        [Route("/Article/GrtArticleById")]
+        [HttpGet]
+        public List<article> AddArticle(int id)
+        {
+            return _articleServices.GrtArticleById(id);
+        }
+
+        /// <summary>
         /// 添加文章
         /// </summary>
         /// <returns></returns>

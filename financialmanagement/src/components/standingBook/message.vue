@@ -1,5 +1,5 @@
 <template>
-    <div class="friends">
+    <div class="friends" v-if="this.$type == '管理员'">
         <el-row v-for="user in users" :key="user.sex">
         <el-menu>
             <el-menu-item>
@@ -10,12 +10,12 @@
                     </el-col>
                     <el-col :span="1"><div class="name">{{   user.name   }}</div></el-col>
                 </router-link>
-                
             </el-menu-item>
         </el-menu>
             
         </el-row>
     </div>
+    <notype v-else></notype>
 </template>
 
 <style>
@@ -35,8 +35,10 @@
 </style>
 
 <script>
+import notype from '../utlis/notype.vue'
 
 export default {
+  components: { notype },
     name:'message',
     data(){
         return{

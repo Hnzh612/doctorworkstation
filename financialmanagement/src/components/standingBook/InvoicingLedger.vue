@@ -77,7 +77,7 @@ export default {
         },
         // 编辑
         edit(row) {
-            this.$router.push('/home/invoicingdetail/' + row.id)
+            this.$router.push('/home/invoicingdetail/' + row.aId)
         },
         // 删除
         async del(id) {

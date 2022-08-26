@@ -10,6 +10,7 @@ namespace highblood.Services
     {
         public CallBack GetAllArticle(int page);
         public List<displayArticle> GetArticleByTitle(string title);
+        public List<article> GrtArticleById(int id);
         public int AddArticle(Article article);
         //public int AddArticle();
         //public int DelArticle();
